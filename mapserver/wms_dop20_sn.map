@@ -1,0 +1,99 @@
+MAP
+    NAME 'OGC:WMS'
+    SIZE 600 600
+    MAXSIZE 5000
+    UNITS meters
+    #CONFIG "PROJ_LIB" "../../epsg"
+    #SYMBOLSET 'symbols.sym'
+    #FONTSET 'fonts/fonts.list'
+    #CONFIG "MS_ERRORFILE" "/tmp/ms_error_shade_rp.log"
+    DEBUG 0
+
+    EXTENT 257000 5538000 521000 5754000
+
+    PROJECTION
+        'init=epsg:25833'
+    END
+
+    IMAGECOLOR 192 192 192
+    IMAGEQUALITY 86
+    IMAGETYPE png24
+    OUTPUTFORMAT
+        NAME png
+        DRIVER 'GD/PNG'
+        MIMETYPE 'image/png'
+        EXTENSION 'png'
+    END
+    OUTPUTFORMAT
+        NAME PNG24
+        DRIVER "GD/PNG"
+        MIMETYPE "image/png"
+        EXTENSION PNG
+        IMAGEMODE RGBA
+        TRANSPARENT ON
+    END
+
+    OUTPUTFORMAT
+        NAME "GTiff"
+        DRIVER GDAL/GTiff
+        MIMETYPE "image/tiff"
+        IMAGEMODE RGB
+        EXTENSION "tif"
+        FORMATOPTION "FILENAME=geotiff.tif"
+        FORMATOPTION "TIFFTAG_DOCUMENTNAME=geotiff.tif"
+    END
+
+    OUTPUTFORMAT
+        NAME png
+        DRIVER AGG/PNG
+        MIMETYPE "image/png"
+        IMAGEMODE RGBA
+        EXTENSION "png"
+        FORMATOPTION "INTERLACE=OFF"
+    END
+
+    LEGEND
+        IMAGECOLOR 255 255 255
+        STATUS ON
+        KEYSIZE 18 12
+        LABEL
+            TYPE BITMAP
+            SIZE MEDIUM
+            COLOR 0 0 0
+        END
+    END
+
+    WEB
+        IMAGEPATH '/tmp/'
+        IMAGEURL '/tmp/'
+        METADATA
+            'wms_title'                       'DOP20 SN'
+            'wms_abstract'                    'Digitales Orthophoto SN'
+            'wms_srs'                         'EPSG:31466 EPSG:31467 EPSG:25833 EPSG:4326 EPSG:4258 EPSG:900913'
+            'wms_extent'                      '257000 5538000 521000 5754000'
+
+            'wms_enable_request'              '*'
+            'wms_encoding' 			'UTF-8'
+        END
+    END
+
+    LAYER
+        NAME "dop20_sn"
+        STATUS ON
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 10000
+        TYPE RASTER
+        DATA "/bigdata/import/sn/dop20_sn/dop20_sn.vrt"
+        PROCESSING "RESAMPLE=BILINEAR"
+        PROCESSING "DITHER=YES"
+        PROJECTION
+            "init=epsg:25833"
+        END
+        METADATA
+            WMS_TITLE "dop20 sn"
+        END
+        TRANSPARENCY 100
+        OFFSITE 0 0 0
+        SIZEUNITS METERS
+    END
+END

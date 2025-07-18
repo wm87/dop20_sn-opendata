@@ -66,4 +66,8 @@ Die Nutzung der Geodaten richtet sich nach den aktuellen Bedingungen des GeoSN. 
 
 👉 [Allgemeine Nutzungsbedingungen](https://www.landesvermessung.sachsen.de/allgemeine-nutzungsbedingungen-8954.html)
 
+DOP20-Daten (XYZ als `.zip`-Pakete) können über das offizielle Geoportal Sachsen bezogen werden:
+  [https://www.geodaten.sachsen.de/batch-download-4719.html](https://www.geodaten.sachsen.de/batch-download-4719.html)
+
+
 **Quelle: GeoSN, [dl-de/by-2-0](https://www.govdata.de/dl-de/by-2-0)**
